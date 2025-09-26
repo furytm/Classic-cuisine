@@ -4,7 +4,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import WhatsAppFloat from "@/components/whatsapp-float"
 import { LanguageProvider, useLanguage } from "@/components/language-provider"
-import MenuPage from "@/src/pages/menu-page"
+import MenuPage from "@/src/views/menu-page"
 
 function MenuPageWrapper() {
   const { language, setLanguage } = useLanguage()

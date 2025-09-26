@@ -4,7 +4,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import WhatsAppFloat from "@/components/whatsapp-float"
 import { LanguageProvider, useLanguage } from "@/components/language-provider"
-import ContactPage from "@/src/pages/contact-page"
+import ContactPage from "@/src/views/contact-page"
 
 function ContactPageWrapper() {
   const { language, setLanguage } = useLanguage()

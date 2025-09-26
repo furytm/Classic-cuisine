@@ -1,5 +1,5 @@
 import { LanguageProvider } from "@/components/language-provider"
-import HomePage from "@/src/pages/home-page"
+import HomePage from "@/src/views/home-page"
 
 export default function Home() {
   return (

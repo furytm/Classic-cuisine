@@ -4,7 +4,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import WhatsAppFloat from "@/components/whatsapp-float"
 import { LanguageProvider, useLanguage } from "@/components/language-provider"
-import EventsPage from "@/src/pages/events-page"
+import EventsPage from "@/src/views/events-page"
 
 function EventsPageWrapper() {
   const { language, setLanguage } = useLanguage()
