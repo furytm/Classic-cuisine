@@ -1,0 +1,294 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to Crystal Class Cuisine brand colors */
+  /* Primary: Luxe Gold (#FFD700) – branding, headings, buttons */
+  --background: #0a0a0a; /* Deep Black for luxury backgrounds */
+  --foreground: #fff8f0; /* Cream White for body text */
+  --card: #1a1a1a; /* Slightly lighter black for cards */
+  --card-foreground: #fff8f0; /* Cream White text on cards */
+  --popover: #1a1a1a;
+  --popover-foreground: #fff8f0;
+  --primary: #ffd700; /* Luxe Gold for primary elements */
+  --primary-foreground: #0a0a0a; /* Deep Black text on gold */
+  --secondary: #2a2a2a; /* Dark gray for secondary elements */
+  --secondary-foreground: #fff8f0;
+  --muted: #1a1a1a;
+  --muted-foreground: #b8b8b8; /* Muted cream for less important text */
+  --accent: #ffd700; /* Luxe Gold for accents */
+  --accent-foreground: #0a0a0a;
+  --destructive: #dc2626;
+  --destructive-foreground: #fff8f0;
+  --border: #333333; /* Subtle borders */
+  --input: #1a1a1a; /* Dark input backgrounds */
+  --ring: #ffd700; /* Gold focus rings */
+  --chart-1: #ffd700;
+  --chart-2: #fff8f0;
+  --chart-3: #b8b8b8;
+  --chart-4: #e6c200;
+  --chart-5: #f5f5dc;
+  --radius: 0.625rem;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #fff8f0;
+  --sidebar-primary: #ffd700;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #1a1a1a;
+  --sidebar-accent-foreground: #fff8f0;
+  --sidebar-border: #333333;
+  --sidebar-ring: #ffd700;
+
+  /* Added Crystal Class Cuisine specific color variables */
+  --luxe-gold: #ffd700;
+  --deep-black: #0a0a0a;
+  --cream-white: #fff8f0;
+  --gold-hover: #e6c200;
+  --gold-light: #fff9cc;
+  --black-light: #1a1a1a;
+  --black-lighter: #2a2a2a;
+}
+
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Updated Crystal Class Cuisine Design System with proper brand colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Added brand-specific color utilities */
+  --color-luxe-gold: var(--luxe-gold);
+  --color-deep-black: var(--deep-black);
+  --color-cream-white: var(--cream-white);
+  --color-gold-hover: var(--gold-hover);
+  --color-gold-light: var(--gold-light);
+  --color-black-light: var(--black-light);
+  --color-black-lighter: var(--black-lighter);
+}
+
+/* Enhanced animations for luxury feel with proper gold colors */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes goldGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  }
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out;
+}
+
+.animate-gold-glow {
+  animation: goldGlow 2s ease-in-out infinite;
+}
+
+.animate-gold-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: goldShimmer 2s infinite;
+}
+
+/* Fixed scrollbar and scroll behavior for better interaction */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  height: 100%;
+  pointer-events: auto;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  touch-action: manipulation;
+  /* Fixed interaction issues for new tab opening */
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--deep-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--luxe-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-hover);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    pointer-events: auto;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: var(--deep-black);
+    color: var(--cream-white);
+    /* Enhanced body positioning and interaction for better new tab functionality */
+    position: relative;
+    min-height: 100vh;
+    touch-action: manipulation;
+    /* Fixed interaction issues for new tab opening */
+    overflow-x: hidden;
+    overflow-y: auto;
+    pointer-events: auto;
+  }
+
+  /* Enhanced heading styles with luxury gold */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--luxe-gold);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+}
+
+@layer utilities {
+  /* Added proper Tailwind utility classes for luxury styling */
+  .luxury-heading {
+    color: var(--luxe-gold);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+
+  .luxury-text {
+    color: var(--cream-white);
+    line-height: 1.6;
+  }
+
+  .luxury-muted {
+    color: var(--muted-foreground);
+  }
+
+  .luxury-button {
+    background: var(--luxe-gold);
+    color: var(--deep-black);
+    border: 2px solid var(--luxe-gold);
+    transition: all 0.3s ease;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .luxury-button:hover {
+    background: transparent;
+    color: var(--luxe-gold);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+
+  .luxury-button-outline {
+    background: transparent;
+    color: var(--luxe-gold);
+    border: 2px solid var(--luxe-gold);
+    transition: all 0.3s ease;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .luxury-button-outline:hover {
+    background: var(--luxe-gold);
+    color: var(--deep-black);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+
+  /* Added responsive utilities for better mobile experience */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  .prevent-zoom {
+    touch-action: pan-x pan-y;
+  }
+}
