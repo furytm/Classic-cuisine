@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   keywords: "West African restaurant, Swedish restaurant, African cuisine, luxury dining, Stockholm restaurant",
  
   generator: "v0.app",
+  
+  icons: {
+    icon: "/images/crystal-class-logo.png", 
+  },
+
 }
 export const viewport: Viewport = {
   width: "device-width",

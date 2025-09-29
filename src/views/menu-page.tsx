@@ -619,36 +619,37 @@ export default function MenuPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-br from-primary/20 via-secondary to-primary/10" />
-        </div>
+    {/* Menu Hero Section */}
+<section className="relative min-h-[50vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden">
+  <div className="absolute inset-0 z-0">
+    <div className="w-full h-full bg-gradient-to-br from-primary/20 via-secondary to-primary/10" />
+  </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up">
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary mb-4 md:mb-6 text-balance">
-            {content.title}
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-secondary-foreground mb-3 md:mb-4 font-light text-balance">
-            {content.subtitle}
-          </p>
-          <p className="text-base sm:text-lg md:text-xl text-secondary-foreground/80 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed text-balance">
-            {content.description}
-          </p>
+  <div className="relative z-10 text-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 animate-fade-in-up">
+    <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary mb-4 md:mb-6 text-balance">
+      {content.title}
+    </h1>
+    <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-secondary-foreground mb-3 md:mb-4 font-light text-balance">
+      {content.subtitle}
+    </p>
+    <p className="text-sm sm:text-lg md:text-xl text-secondary-foreground/80 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed text-balance">
+      {content.description}
+    </p>
 
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-secondary font-semibold px-6 md:px-8 py-3 md:py-4 rounded-full transition-all duration-300 hover:scale-105 bg-transparent"
-          >
-            <Link href="/" className="flex items-center space-x-2">
-              <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
-              <span className="text-sm md:text-base">{content.backToHome}</span>
-            </Link>
-          </Button>
-        </div>
-      </section>
+    <Button
+      asChild
+      variant="outline"
+      size="lg"
+      className="border-2 border-primary text-primary hover:bg-primary hover:text-secondary font-semibold px-6 md:px-8 py-3 md:py-4 rounded-full transition-all duration-300 hover:scale-105 bg-transparent"
+    >
+      <Link href="/" className="flex items-center space-x-2">
+        <ArrowLeft className="w-4 h-4 md:w-5 md:h-5" />
+        <span className="text-sm md:text-base">{content.backToHome}</span>
+      </Link>
+    </Button>
+  </div>
+</section>
+
 
       {/* Menu Section */}
       <section className="py-12 md:py-16 lg:py-20 bg-background">

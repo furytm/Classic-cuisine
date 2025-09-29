@@ -111,52 +111,58 @@ export default function HomePage() {
     <div className="min-h-screen">
       <Navigation language={language} onLanguageChange={setLanguage} />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] md:min-h-[80vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-section.jpg"
-            alt="Crystal Class Cuisine Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
+{/* Hero Section */}
+<section className="relative min-h-[60vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
+  <div className="absolute inset-0 z-0">
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      poster="/images/hero-fallback.jpg"
+      className="w-full h-full object-cover"
+    >
+      <source src="/videos/chef-cooking.webm" type="video/webm" />
+      <source src="/videos/chef-cooking.mp4" type="video/mp4" />
+      {/* If the browser doesn't support video, show fallback text */}
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up">
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-6 text-balance">
-            {content.hero.title}
-          </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl text-white mb-4 font-light text-balance">
-            {content.hero.subtitle}
-          </p>
-          <p className="text-lg md:text-xl text-white mb-12 max-w-2xl mx-auto leading-relaxed text-balance">
-            {content.hero.description}
-          </p>
+  <div className="relative z-10 text-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 animate-fade-in-up">
+    <h1 className="font-serif text-3xl lg:text-8xl font-bold text-primary mb-6 text-balance">
+      {content.hero.title}
+    </h1>
+    <p className="text-lg lg:text-3xl text-white mb-4 font-light text-balance">
+      {content.hero.subtitle}
+    </p>
+    <p className="text-base lg:text-xl text-white mb-12 max-w-2xl mx-auto leading-relaxed text-balance">
+      {content.hero.description}
+    </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary text-secondary hover:bg-primary/90 font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105 animate-gold-glow"
-            >
-              <Link href="/menu" className="flex items-center space-x-2">
-                <span>{content.hero.viewMenu}</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-2 border-white text-white hover:bg-secondary hover:text-primary font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105 bg-transparent"
-            >
-              <Link href="/booking">{content.hero.bookTable}</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+      <Button
+        asChild
+        size="lg"
+        className="bg-primary text-secondary hover:bg-primary/90 font-semibold px-6 py-3 rounded-full text-base lg:text-lg transition-all duration-300 hover:scale-105 animate-gold-glow"
+      >
+        <Link href="/menu" className="flex items-center space-x-2">
+          <span>{content.hero.viewMenu}</span>
+          <ArrowRight className="w-5 h-5" />
+        </Link>
+      </Button>
+      <Button
+        asChild
+        variant="outline"
+        size="lg"
+        className="border-2 border-white text-white hover:bg-secondary hover:text-primary font-semibold px-6 py-3 rounded-full text-base lg:text-lg transition-all duration-300 hover:scale-105 bg-transparent"
+      >
+        <Link href="/booking">{content.hero.bookTable}</Link>
+      </Button>
+    </div>
+  </div>
+</section>
+
 
       {/* Highlights Section */}
       <section className="py-20 bg-secondary">

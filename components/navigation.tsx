@@ -44,11 +44,11 @@ export default function Navigation({ language, onLanguageChange }: NavigationPro
             <Image
               src="/images/crystal-class-logo.png"
               alt="Crystal Class Cuisine"
-              width={40}
-              height={40}
-              className="w-10 h-10"
+              width={48}
+              height={48}
+              className="w-12 h-12"
             />
-          <span className="text-primary font-serif text-base sm:text-lg md:text-xl font-bold">
+          <span className="text-primary font-serif text-sm sm:text-base lg:text-xl font-bold">
   Crystal Class Cuisine
 </span>
 

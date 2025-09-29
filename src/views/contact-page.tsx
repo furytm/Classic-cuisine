@@ -34,7 +34,7 @@ const contactContent = {
       messagePlaceholder: "Tell us how we can help you...",
     },
     info: {
-      address: "Kungsgatan 12, 111 43 Stockholm, Sweden",
+      address: "Skärholmenstorget 1, 127 48 Skärholmen",
       phone: "+46 123 456 789",
       email: "info@crystalclasscuisine.se",
       weekdays: "Monday - Thursday: 11:00 - 22:00",
@@ -107,36 +107,36 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] md:min-h-[70vh] lg:min-h-[75vh]  flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-br from-primary/15 via-secondary to-primary/10" />
-        </div>
+    {/* Hero Section */}
+<section className="relative min-h-[50vh] lg:min-h-[75vh] flex items-center justify-center overflow-hidden pt-20">
+  <div className="absolute inset-0 z-0">
+    <div className="w-full h-full bg-gradient-to-br from-primary/15 via-secondary to-primary/10" />
+  </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up">
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-primary mb-6 text-balance">
-            {content.title}
-          </h1>
-          <p className="text-xl md:text-2xl lg:text-3xl text-secondary-foreground mb-4 font-light text-balance">
-            {content.subtitle}
-          </p>
-          <p className="text-lg md:text-xl text-secondary-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed text-balance">
-            {content.description}
-          </p>
+  <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up">
+    <h1 className="font-serif text-3xl lg:text-8xl font-bold text-primary mb-4 text-balance">
+      {content.title}
+    </h1>
+    <p className="text-lg lg:text-3xl text-secondary-foreground mb-3 font-light text-balance">
+      {content.subtitle}
+    </p>
+    <p className="text-base lg:text-xl text-secondary-foreground/80 mb-8 max-w-2xl mx-auto leading-relaxed text-balance">
+      {content.description}
+    </p>
 
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-secondary font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 bg-transparent"
-          >
-            <Link href="/" className="flex items-center space-x-2">
-              <ArrowLeft className="w-5 h-5" />
-              <span>{content.backToHome}</span>
-            </Link>
-          </Button>
-        </div>
-      </section>
+    <Button
+      asChild
+      variant="outline"
+      size="lg"
+      className="border-2 border-primary text-primary hover:bg-primary hover:text-secondary font-semibold px-6 py-3 text-base lg:px-8 lg:py-4 lg:text-lg rounded-full transition-all duration-300 hover:scale-105 bg-transparent"
+    >
+      <Link href="/" className="flex items-center space-x-2">
+        <ArrowLeft className="w-4 h-4 lg:w-5 lg:h-5" />
+        <span>{content.backToHome}</span>
+      </Link>
+    </Button>
+  </div>
+</section>
 
       {/* Contact Section */}
       <section className="py-20 bg-background">
@@ -284,39 +284,50 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+{/* Map Section */}
+<section className="py-20 bg-secondary">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="font-serif text-4xl font-bold text-primary mb-12 text-center animate-fade-in-up">
+      {language === "en" ? "Find Us" : "Hitta Oss"}
+    </h2>
 
-      {/* Map Section */}
-      <section className="py-20 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif text-4xl font-bold text-primary mb-12 text-center animate-fade-in-up">
-            {language === "en" ? "Find Us" : "Hitta Oss"}
-          </h2>
+    <div className="bg-background rounded-lg overflow-hidden shadow-lg animate-scale-in">
+      {/* Replace placeholder with live Google Map */}
+      <div className="w-full h-[300px]">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4076.9791174268616!2d17.903716746085934!3d59.27467657997264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f76a34001ce7d%3A0xb00fef31707ba93!2s127%2048%20Sk%C3%A4rholmen%2C%20Sweden!5e0!3m2!1sen!2sng!4v1759181496468!5m2!1sen!2sng"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
 
-          <div className="bg-background rounded-lg overflow-hidden shadow-lg animate-scale-in">
-            <div className="aspect-video bg-muted flex items-center justify-center">
-              <div className="text-center text-muted-foreground">
-                <MapPin className="w-16 h-16 mx-auto mb-4 text-primary" />
-                <h3 className="text-xl font-semibold mb-2">
-                  {language === "en" ? "Interactive Map" : "Interaktiv Karta"}
-                </h3>
-                <p className="mb-4">{content.info.address}</p>
-                <Button
-                  asChild
-                  className="bg-primary text-secondary hover:bg-primary/90 font-medium px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
-                >
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(content.info.address)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {content.directions}
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Info + Directions button under map */}
+      <div className="p-6 text-center">
+        <h3 className="text-xl font-semibold mb-2">
+          {language === "en" ? "Our Location" : "Vår Plats"}
+        </h3>
+        <p className="mb-4">{content.info.address}</p>
+        <Button
+          asChild
+          className="bg-primary text-secondary hover:bg-primary/90 font-medium px-6 py-2 rounded-full transition-all duration-300 hover:scale-105"
+        >
+          <a
+            href={`https://maps.google.com/?q=${encodeURIComponent(content.info.address)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {content.directions}
+          </a>
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
     </>
   )
 }

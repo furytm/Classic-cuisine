@@ -174,28 +174,29 @@ export default function BookingPage() {
 
   return (
     <>
-      <section className="relative pt-20 pb-12 bg-gradient-to-br from-primary/20 via-secondary to-primary/15">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-primary mb-6 text-balance">
-            {content.title}
-          </h1>
-          <p className="text-xl md:text-2xl text-secondary-foreground mb-8 font-light text-balance max-w-3xl mx-auto leading-relaxed">
-            {content.subtitle}
-          </p>
+    <section className="relative pt-20 pb-12 bg-gradient-to-br from-primary/20 via-secondary to-primary/15">
+  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
+    <h1 className="font-serif text-3xl lg:text-7xl font-bold text-primary mb-4 text-balance">
+      {content.title}
+    </h1>
+    <p className="text-lg lg:text-2xl text-secondary-foreground mb-8 font-light text-balance max-w-3xl mx-auto leading-relaxed">
+      {content.subtitle}
+    </p>
 
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-secondary font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 bg-transparent"
-          >
-            <Link href="/" className="flex items-center space-x-2">
-              <ArrowLeft className="w-5 h-5" />
-              <span>{content.backToHome}</span>
-            </Link>
-          </Button>
-        </div>
-      </section>
+    <Button
+      asChild
+      variant="outline"
+      size="lg"
+      className="border-2 border-primary text-primary hover:bg-primary hover:text-secondary font-semibold px-6 py-3 text-base lg:px-8 lg:py-4 lg:text-lg rounded-full transition-all duration-300 hover:scale-105 bg-transparent"
+    >
+      <Link href="/" className="flex items-center space-x-2">
+        <ArrowLeft className="w-4 h-4 lg:w-5 lg:h-5" />
+        <span>{content.backToHome}</span>
+      </Link>
+    </Button>
+  </div>
+</section>
+
 
       <section className="py-16 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -15,7 +15,7 @@ const footerContent = {
     hours: "Opening Hours",
     followUs: "Follow Us",
     copyright: "© 2025 Crystal Class Cuisine. All rights reserved.",
-    address: "Stockholm, Sweden",
+    address: "Skärholmenstorget 1, 127 48 Skärholmen",
     phone: "+46 123 456 789",
     email: "info@crystalclasscuisine.se",
     weekdays: "Mon - Thu: 11:00 - 22:00",
@@ -100,7 +100,7 @@ export default function Footer({ language }: FooterProps) {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span className="text-muted-foreground">{content.address}</span>
+                <span className="text-muted-foreground">Skärholmenstorget 1, 127 48 <br></br>Skärholmen"</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary" />
@@ -157,16 +157,20 @@ export default function Footer({ language }: FooterProps) {
           </div>
         </div>
 
-        {/* Google Map Preview */}
-        <div className="mt-8 pt-8 border-t border-primary/20">
-          <div className="bg-muted rounded-lg h-48 flex items-center justify-center">
-            <div className="text-center text-muted-foreground">
-              <MapPin className="w-12 h-12 mx-auto mb-2 text-primary" />
-              <p className="font-medium">Restaurant Location</p>
-              <p className="text-sm">Interactive map will be embedded here</p>
-            </div>
-          </div>
-        </div>
+{/* Google Map Preview */}
+<div className="mt-8 pt-8 border-t border-primary/20">
+  <div className="bg-muted rounded-lg overflow-hidden h-64">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4076.9791174268616!2d17.903716746085934!3d59.27467657997264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f76a34001ce7d%3A0xb00fef31707ba93!2s127%2048%20Sk%C3%A4rholmen%2C%20Sweden!5e0!3m2!1sen!2sng!4v1759181496468!5m2!1sen!2sng"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-primary/20 text-center">
