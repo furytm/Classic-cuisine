@@ -16,10 +16,10 @@ const footerContent = {
     followUs: "Follow Us",
     copyright: "© 2025 Crystal Class Cuisine. All rights reserved.",
     address: "Skärholmenstorget 1, 127 48 Skärholmen",
-    phone: "+46 123 456 789",
-    email: "info@crystalclasscuisine.se",
-    weekdays: "Mon - Thu: 11:00 - 22:00",
-    weekends: "Fri - Sun: 11:00 - 23:00",
+    phone: "+46764140284",
+    email: "contact@crystalclasscuisine.se",
+    weekdays: "Mon - Sun: 11am - 9pm",
+
     links: [
       { href: "/", label: "Home" },
       { href: "/menu", label: "Menu" },
@@ -36,9 +36,9 @@ const footerContent = {
     followUs: "Följ Oss",
     copyright: "© 2025 Crystal Class Cuisine. Alla rättigheter förbehållna.",
     address: "Stockholm, Sverige",
-    phone: "+46 123 456 789",
+    phone: "+46 76 414 02 84",
     email: "info@crystalclasscuisine.se",
-    weekdays: "Mån - Tor: 11:00 - 22:00",
+    weekdays: "Mån - Sön: 11f.m - 9 e.m",
     weekends: "Fre - Sön: 11:00 - 23:00",
     links: [
       { href: "/", label: "Hem" },
@@ -57,18 +57,33 @@ export default function Footer({ language }: FooterProps) {
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+   
+{/* Google Map Preview */}
+<div className="mb-12 border-primary/20">
+  <div className="bg-muted rounded-lg overflow-hidden h-64">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4076.9791174268616!2d17.903716746085934!3d59.27467657997264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f76a34001ce7d%3A0xb00fef31707ba93!2s127%2048%20Sk%C3%A4rholmen%2C%20Sweden!5e0!3m2!1sen!2sng!4v1759181496468!5m2!1sen!2sng"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>     
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <Image
-                src="/images/crystal-class-logo.png"
+                src="/images/crystal-class-logo2.png"
                 alt="Crystal Class Cuisine"
-                width={40}
-                height={40}
-                className="w-10 h-10"
+                width={48}
+                height={48}
+                className="w-20 h-12"
               />
-              <span className="text-primary font-serif text-xl font-bold">Crystal Class Cuisine</span>
+              <span className="text-primary font-serif text-sm sm:text-base lg:text-xl font-bold">Crystal Class Cuisine</span>
             </div>
             <p className="text-muted-foreground leading-relaxed">
               {language === "en"
@@ -121,7 +136,7 @@ export default function Footer({ language }: FooterProps) {
                 <Clock className="w-5 h-5 text-primary" />
                 <div className="text-muted-foreground">
                   <div>{content.weekdays}</div>
-                  <div>{content.weekends}</div>
+              
                 </div>
               </div>
             </div>
@@ -157,24 +172,11 @@ export default function Footer({ language }: FooterProps) {
           </div>
         </div>
 
-{/* Google Map Preview */}
-<div className="mt-8 pt-8 border-t border-primary/20">
-  <div className="bg-muted rounded-lg overflow-hidden h-64">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4076.9791174268616!2d17.903716746085934!3d59.27467657997264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f76a34001ce7d%3A0xb00fef31707ba93!2s127%2048%20Sk%C3%A4rholmen%2C%20Sweden!5e0!3m2!1sen!2sng!4v1759181496468!5m2!1sen!2sng"
-      width="100%"
-      height="100%"
-      style={{ border: 0 }}
-      allowFullScreen
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-    ></iframe>
-  </div>
-</div>
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-primary/20 text-center">
           <p className="text-muted-foreground">{content.copyright}</p>
+          <p>Developed by Suwebatu</p>
         </div>
       </div>
     </footer>

@@ -42,11 +42,11 @@ export default function Navigation({ language, onLanguageChange }: NavigationPro
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/images/crystal-class-logo.png"
+              src="/images/crystal-class-logo2.png"
               alt="Crystal Class Cuisine"
               width={48}
               height={48}
-              className="w-12 h-12"
+              className="w-20 h-12"
             />
           <span className="text-primary font-serif text-sm sm:text-base lg:text-xl font-bold">
   Crystal Class Cuisine

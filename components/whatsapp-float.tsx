@@ -68,7 +68,7 @@ export default function WhatsAppFloat({ language }: WhatsAppFloatProps) {
   const content = whatsappContent[language]
 
   const handleOptionClick = (message: string) => {
-    const whatsappUrl = `https://wa.me/46123456789?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/46764140284?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, "_blank")
     setIsOpen(false)
   }

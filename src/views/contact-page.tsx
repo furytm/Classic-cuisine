@@ -35,8 +35,8 @@ const contactContent = {
     },
     info: {
       address: "Skärholmenstorget 1, 127 48 Skärholmen",
-      phone: "+46 123 456 789",
-      email: "info@crystalclasscuisine.se",
+      phone: "+46 76 414 02 84",
+      email: "contact@crystalclasscuisine.se",
       weekdays: "Monday - Thursday: 11:00 - 22:00",
       weekends: "Friday - Sunday: 11:00 - 23:00",
     },
@@ -68,8 +68,8 @@ const contactContent = {
     },
     info: {
       address: "Kungsgatan 12, 111 43 Stockholm, Sverige",
-      phone: "+46 123 456 789",
-      email: "info@crystalclasscuisine.se",
+      phone: "+46 76 414 02 84",
+      email: "contact@crystalclasscuisine.se",
       weekdays: "Måndag - Torsdag: 11:00 - 22:00",
       weekends: "Fredag - Söndag: 11:00 - 23:00",
     },

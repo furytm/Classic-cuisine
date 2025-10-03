@@ -622,6 +622,7 @@ export default function MenuPage() {
     {/* Menu Hero Section */}
 <section className="relative min-h-[50vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden">
   <div className="absolute inset-0 z-0">
+  
     <div className="w-full h-full bg-gradient-to-br from-primary/20 via-secondary to-primary/10" />
   </div>
 
@@ -629,7 +630,7 @@ export default function MenuPage() {
     <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary mb-4 md:mb-6 text-balance">
       {content.title}
     </h1>
-    <p className="text-base sm:text-xl md:text-2xl lg:text-3xl text-secondary-foreground mb-3 md:mb-4 font-light text-balance">
+    <p className="text-base sm:text-xl md:text-2xl lg:text-4xl text-secondary-foreground mb-3 md:mb-4 font-light text-balance">
       {content.subtitle}
     </p>
     <p className="text-sm sm:text-lg md:text-xl text-secondary-foreground/80 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed text-balance">
@@ -672,7 +673,7 @@ export default function MenuPage() {
           </div>
 
           {/* Menu Items Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredItems.map((item, index) => (
               <div
                 key={item.id}

@@ -204,7 +204,8 @@ export default function HomePage() {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">{content.featured.subtitle}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
+
           
             <div className="group cursor-pointer animate-scale-in">
               <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative">
@@ -236,8 +237,8 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="group cursor-pointer animate-scale-in" style={{ animationDelay: "0.2s" }}>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative">
+            <div className="group cursor-pointer animate-scale-in col-span-2 md:col-span-1 flex justify-center" style={{ animationDelay: "0.2s" }}>
+              <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative  w-full max-w-[200px]">
                  <Image
             src="/images/peppered-meat-plantain.jpg" 
             alt="Signature Dish"
@@ -290,12 +291,21 @@ export default function HomePage() {
               </Button>
             </div>
             <div className="animate-scale-in">
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+              <div className=" h-[300px] lg:h-[500px] bg-muted rounded-lg overflow-hidden relative">
+                   <Image
+      src="/images/hero-section.jpg"
+      alt="Background"
+      fill
+      priority
+     className="object-cover z-0"
+    />
+
+                <div className="absolute inset-0 z-10 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
                   <div className="text-center text-primary">
                     <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Award className="w-12 h-12" />
                     </div>
+                    
                     <p className="font-serif text-xl font-semibold">Our Heritage</p>
                   </div>
                 </div>
