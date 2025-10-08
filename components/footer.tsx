@@ -62,7 +62,7 @@ export default function Footer({ language }: FooterProps) {
 <div className="mb-12 border-primary/20">
   <div className="bg-muted rounded-lg overflow-hidden h-64">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4076.9791174268616!2d17.903716746085934!3d59.27467657997264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f76a34001ce7d%3A0xb00fef31707ba93!2s127%2048%20Sk%C3%A4rholmen%2C%20Sweden!5e0!3m2!1sen!2sng!4v1759181496468!5m2!1sen!2sng"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2038.3586701471097!2d17.90468237619346!3d59.276863115220316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f76a21e986279%3A0x208cbd3fbfbd8ae8!2sSk%C3%A4rholmsg%C3%A5ngen%2018%2C%20127%2048%20Sk%C3%A4rholmen%2C%20Sweden!5e0!3m2!1sen!2sng!4v1759927101054!5m2!1sen!2sng"
       width="100%"
       height="100%"
       style={{ border: 0 }}
@@ -175,8 +175,8 @@ export default function Footer({ language }: FooterProps) {
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-primary/20 text-center">
-          <p className="text-muted-foreground">{content.copyright}</p>
-          <p>Developed by Suwebatu</p>
+          <p className="text-white">{content.copyright}</p>
+          <p className="text-white">Developed and Designed by Suwebatu</p>
         </div>
       </div>
     </footer>
