@@ -17,7 +17,7 @@ const footerContent = {
     copyright: "© 2025 Crystal Class Cuisine. All rights reserved.",
     address: "Skärholmenstorget 1, 127 48 Skärholmen",
     phone: "+46764140284",
-    email: "contact@crystalclasscuisine.se",
+    email: "contact@crystalclasscuisine.com",
     weekdays: "Mon - Sun: 11am - 9pm",
 
     links: [

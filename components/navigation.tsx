@@ -48,8 +48,8 @@ export default function Navigation({ language, onLanguageChange }: NavigationPro
               height={48}
               className="w-20 h-12"
             />
-          <span className="text-primary font-serif text-sm sm:text-base lg:text-xl font-bold">
-  Crystal Class Cuisine
+          <span className="text-primary font-serif text-xs sm:text-base lg:text-sm font-bold">
+ Roots on a plate <br></br>soul in every bite
 </span>
 
           </Link>
