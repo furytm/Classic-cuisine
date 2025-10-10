@@ -1,9 +1,22 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+.dancing-script {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  font-family: Arial,
+    Helvetica,
+    sans-serif;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
