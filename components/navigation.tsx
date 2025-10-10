@@ -48,9 +48,7 @@ export default function Navigation({ language, onLanguageChange }: NavigationPro
               height={48}
               className="w-20 h-12"
             />
-          <span className="text-primary font-serif text-sm sm:text-base lg:text-xl font-bold dancing-script">
-Soul In Every Bite
-</span>
+      <span className="text-primary font-serif text-xl xl:text-base lg:text-xl font-bold dancing-script"> Soul In Every Bite </span>
 
           </Link>
 

@@ -4,8 +4,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap");
 .dancing-script {
  font-family: "Dancing Script", cursive;
-  font-optical-sizing: auto;
-  font-weight: 400;
+  font-optical-sizing: bold;
+  font-weight: 700;
   font-style: normal;
 }
 
