@@ -1,13 +1,20 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { MessageCircle, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/components/language-provider"
 import { whatsappMessages, openWhatsApp } from "@/components/whatsapp-utils"
+import { ShoppingCart, X, Plus, Minus, Trash2 } from 'lucide-react'
 
+type CartItem = {
+  id: number
+  name: string
+  price: number
+  quantity: number
+}
 
 const menuContent = {
   en: {
@@ -30,6 +37,14 @@ const menuContent = {
     orderViaWhatsApp: "Order via WhatsApp",
     backToHome: "Back to Home",
     currency: "kr",
+     addToCart: "Add to Cart",
+    cart: "Cart",
+    cartEmpty: "Your cart is empty",
+    total: "Total",
+    clearCart: "Clear Cart",
+    checkout: "Order via WhatsApp",
+    itemsInCart: "items in cart",
+    orderMessage: "Hi, I'd like to place an order:",
   },
   sv: {
     title: "Vår Meny",
@@ -51,6 +66,14 @@ const menuContent = {
     orderViaWhatsApp: "Beställ via WhatsApp",
     backToHome: "Tillbaka till Hem",
     currency: "kr",
+    addToCart: "Lägg till i varukorg",
+    cart: "Varukorg",
+    cartEmpty: "Din varukorg är tom",
+    total: "Totalt",
+    clearCart: "Töm varukorg",
+    checkout: "Beställ via WhatsApp",
+    itemsInCart: "artiklar i varukorgen",
+    orderMessage: "Hej, jag vill lägga en beställning:",
   },
 }
 
@@ -1561,25 +1584,90 @@ const menuItems = {
 export default function MenuPage() {
   const { language } = useLanguage()
   const [activeCategory, setActiveCategory] = useState("All")
+  const [cart, setCart] = useState<CartItem[]>([])
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isCartLoaded, setIsCartLoaded] = useState(false)
+
   const content = menuContent[language]
   const items = menuItems[language]
+
+  useEffect(() => {
+    try {
+      const savedCart = localStorage.getItem("crystalclasscuisine_cart")
+      if (savedCart) {
+        const parsedCart = JSON.parse(savedCart)
+        setCart(parsedCart)
+      }
+    } catch (error) {
+      console.error("Error loading cart from localStorage:", error)
+    } finally {
+      setIsCartLoaded(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (isCartLoaded) {
+      try {
+        localStorage.setItem("crystalclasscuisine_cart", JSON.stringify(cart))
+      } catch (error) {
+        console.error("Error saving cart to localStorage:", error)
+      }
+    }
+  }, [cart, isCartLoaded])
 
   const filteredItems =
     activeCategory === "All" || activeCategory === "Alla"
       ? items
       : items.filter((item) => item.category === activeCategory)
 
-const handleWhatsAppOrder = (itemName: string, price: number) => {
-  // Custom message based on language
-  const message =
-    language === "en"
-      ? `Hi, I would like to order ${itemName} for ${price} SEK.`
-      : `Hej, jag vill beställa ${itemName} för ${price} SEK.`
+  const addToCart = (item: { id: number; name: string; price: number }) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id)
+      if (existingItem) {
+        return prevCart.map((cartItem) =>
+          cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem,
+        )
+      }
+      return [...prevCart, { ...item, quantity: 1 }]
+    })
+  }
 
-  // Reuse your helper to open WhatsApp
-  openWhatsApp(message)
-}
+  const removeFromCart = (id: number) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id))
+  }
 
+  const increaseQuantity = (id: number) => {
+    setCart((prevCart) => prevCart.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item)))
+  }
+
+  const decreaseQuantity = (id: number) => {
+    setCart((prevCart) =>
+      prevCart.map((item) => (item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item)),
+    )
+  }
+
+  const clearCart = () => {
+    setCart([])
+    localStorage.removeItem("crystalclasscuisine_cart")
+  }
+
+  const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0)
+
+  const cartItemCount = cart.reduce((count, item) => count + item.quantity, 0)
+
+  const handleWhatsAppCheckout = () => {
+    if (cart.length === 0) return
+
+    let message = `${content.orderMessage}\n\n`
+    cart.forEach((item) => {
+      message += `${item.quantity}× ${item.name} - ${item.price * item.quantity} ${content.currency}\n`
+    })
+    message += `\n${content.total}: ${cartTotal} ${content.currency}`
+
+    openWhatsApp(message)
+    clearCart()
+    setIsCartOpen(false)
+  }
 
   return (
     <>
@@ -1616,7 +1704,7 @@ const handleWhatsAppOrder = (itemName: string, price: number) => {
 </section>
 
 
-      {/* Menu Section */}
+     {/* Menu Section */}
       <section className="py-12 md:py-16 lg:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter */}
@@ -1637,7 +1725,7 @@ const handleWhatsAppOrder = (itemName: string, price: number) => {
           </div>
 
           {/* Menu Items Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {filteredItems.map((item, index) => (
               <div
                 key={item.id}
@@ -1670,14 +1758,12 @@ const handleWhatsAppOrder = (itemName: string, price: number) => {
                       {item.price} {content.currency}
                     </span>
                     <Button
-                      onClick={() => handleWhatsAppOrder(item.name, item.price)}
-                      className="bg-green-600 hover:bg-green-700 text-white font-medium px-3 md:px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 flex items-center space-x-1 md:space-x-2 text-xs md:text-sm touch-manipulation"
+                      onClick={() => addToCart({ id: item.id, name: item.name, price: item.price })}
+                      className="bg-primary hover:bg-primary/90 text-secondary font-medium px-3 md:px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 flex items-center space-x-1 md:space-x-2 text-xs md:text-sm touch-manipulation"
                     >
-                      <MessageCircle className="w-3 h-3 md:w-4 md:h-4" />
-                 <span>  {language === "en"
-                ? "Order"
-                : "Beställa "}</span>
-
+                      <ShoppingCart className="w-3 h-3 md:w-4 md:h-4" />
+                      <span className="hidden sm:inline">{content.addToCart}</span>
+                      <span className="sm:hidden">Add</span>
                     </Button>
                   </div>
                 </div>
@@ -1692,8 +1778,8 @@ const handleWhatsAppOrder = (itemName: string, price: number) => {
             </h3>
             <p className="text-secondary-foreground mb-6 max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
               {language === "en"
-                ? "All orders are processed through WhatsApp for personalized service. Click any 'Order' button to start your order with our team."
-                : "Alla beställningar behandlas via WhatsApp för personlig service. Klicka på valfri 'Beställ via WhatsApp'-knapp för att starta din beställning med vårt team."}
+                ? "Add items to your cart and checkout via WhatsApp for personalized service. Our team will confirm your order details."
+                : "Lägg till artiklar i din varukorg och checka ut via WhatsApp för personlig service. Vårt team kommer att bekräfta dina beställningsdetaljer."}
             </p>
             <div className="flex items-center justify-center space-x-2 text-green-600 font-semibold">
               <MessageCircle className="w-4 h-4 md:w-5 md:h-5" />
@@ -1702,6 +1788,124 @@ const handleWhatsAppOrder = (itemName: string, price: number) => {
           </div>
         </div>
       </section>
+
+      <button
+        onClick={() => setIsCartOpen(true)}
+        className="fixed bottom-6 right-6 bg-primary text-secondary p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-40 touch-manipulation"
+        aria-label={content.cart}
+      >
+        <ShoppingCart className="w-6 h-6" />
+        {cartItemCount > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+            {cartItemCount}
+          </span>
+        )}
+      </button>
+
+      {isCartOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-50 transition-opacity duration-300"
+          onClick={() => setIsCartOpen(false)}
+        />
+      )}
+
+      <div
+        className={`fixed top-0 right-0 h-full w-full sm:w-96 bg-background shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
+          isCartOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Cart Header */}
+          <div className="flex items-center justify-between p-6 border-b border-border">
+            <h2 className="text-2xl font-serif font-bold text-primary flex items-center gap-2">
+              <ShoppingCart className="w-6 h-6" />
+              {content.cart}
+            </h2>
+            <button
+              onClick={() => setIsCartOpen(false)}
+              className="p-2 hover:bg-secondary rounded-full transition-colors"
+              aria-label="Close cart"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Cart Items */}
+          <div className="flex-1 overflow-y-auto p-6">
+            {cart.length === 0 ? (
+              <div className="flex flex-col items-center justify-center h-full text-center">
+                <ShoppingCart className="w-16 h-16 text-muted-foreground mb-4" />
+                <p className="text-muted-foreground text-lg">{content.cartEmpty}</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {cart.map((item) => (
+                  <div key={item.id} className="bg-card p-4 rounded-lg shadow-md">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="font-semibold text-primary flex-1">{item.name}</h3>
+                      <button
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-red-500 hover:text-red-700 p-1"
+                        aria-label="Remove item"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={() => decreaseQuantity(item.id)}
+                          className="bg-secondary hover:bg-secondary/80 p-1 rounded-full transition-colors"
+                          aria-label="Decrease quantity"
+                        >
+                          <Minus className="w-4 h-4" />
+                        </button>
+                        <span className="font-semibold text-lg w-8 text-center">{item.quantity}</span>
+                        <button
+                          onClick={() => increaseQuantity(item.id)}
+                          className="bg-secondary hover:bg-secondary/80 p-1 rounded-full transition-colors"
+                          aria-label="Increase quantity"
+                        >
+                          <Plus className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <span className="font-bold text-primary">
+                        {item.price * item.quantity} {content.currency}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Cart Footer */}
+          {cart.length > 0 && (
+            <div className="border-t border-border p-6 space-y-4">
+              <div className="flex justify-between items-center text-lg font-semibold">
+                <span>{content.total}:</span>
+                <span className="text-2xl text-primary">
+                  {cartTotal} {content.currency}
+                </span>
+              </div>
+              <Button
+                onClick={handleWhatsAppCheckout}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-full transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-5 h-5" />
+                {content.checkout}
+              </Button>
+              <Button
+                onClick={clearCart}
+                variant="outline"
+                className="w-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-semibold py-3 rounded-full transition-all duration-300 bg-transparent"
+              >
+                {content.clearCart}
+              </Button>
+            </div>
+          )}
+        </div>
+      </div>
     </>
   )
 }

@@ -2,7 +2,7 @@
 
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
-import WhatsAppFloat from "@/components/whatsapp-float"
+
 import { LanguageProvider, useLanguage } from "@/components/language-provider"
 import MenuPage from "@/src/views/menu-page"
 
@@ -14,7 +14,7 @@ function MenuPageWrapper() {
       <Navigation language={language} onLanguageChange={setLanguage} />
       <MenuPage />
       <Footer language={language} />
-      <WhatsAppFloat language={language} />
+
     </div>
   )
 }
