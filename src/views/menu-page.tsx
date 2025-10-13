@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/components/language-provider"
 import { whatsappMessages, openWhatsApp } from "@/components/whatsapp-utils"
 
+
 const menuContent = {
   en: {
     title: "Our Menu",
@@ -1568,10 +1569,17 @@ export default function MenuPage() {
       ? items
       : items.filter((item) => item.category === activeCategory)
 
-  const handleWhatsAppOrder = (itemName: string, price: number) => {
-    const message = whatsappMessages[language].quickOrder(itemName, price)
-    openWhatsApp(message)
-  }
+const handleWhatsAppOrder = (itemName: string, price: number) => {
+  // Custom message based on language
+  const message =
+    language === "en"
+      ? `Hi, I would like to order ${itemName} for ${price} SEK.`
+      : `Hej, jag vill beställa ${itemName} för ${price} SEK.`
+
+  // Reuse your helper to open WhatsApp
+  openWhatsApp(message)
+}
+
 
   return (
     <>
@@ -1689,7 +1697,7 @@ export default function MenuPage() {
             </p>
             <div className="flex items-center justify-center space-x-2 text-green-600 font-semibold">
               <MessageCircle className="w-4 h-4 md:w-5 md:h-5" />
-              <span className="text-sm md:text-base">+46 123 456 789</span>
+              <span className="text-sm md:text-base">+46764140284</span>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client"
 
-export const whatsappNumber = "+46123456789"
+export const whatsappNumber = "+46764140284"
 
 export const createWhatsAppUrl = (message: string): string => {
   return `https://wa.me/${whatsappNumber.replace("+", "")}?text=${encodeURIComponent(message)}`
