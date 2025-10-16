@@ -115,7 +115,7 @@ export default function Navigation({ language, onLanguageChange }: NavigationPro
                   asChild
                   className="w-full bg-primary text-secondary hover:bg-primary/90 font-medium py-2 rounded-full transition-all duration-300"
                 >
-                  <Link href="/booking" onClick={() => setIsOpen(false)}>
+                  <Link href="/menu" onClick={() => setIsOpen(false)}>
                     {ctaLabels[language]}
                   </Link>
                 </Button>
