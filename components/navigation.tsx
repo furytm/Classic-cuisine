@@ -83,7 +83,7 @@ export default function Navigation({ language, onLanguageChange }: NavigationPro
               asChild
               className="bg-primary text-secondary hover:bg-primary/90 font-medium px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 animate-gold-glow hidden sm:inline-flex"
             >
-              <Link href="/booking">{ctaLabels[language]}</Link>
+              <Link href="/menu">{ctaLabels[language]}</Link>
             </Button>
 
             {/* Mobile menu button */}
