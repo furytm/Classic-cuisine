@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   generator: "v0.app",
   
   icons: {
-    icon: "/images/crystal-class-logo.png", 
+    icon: "/images/crystal-class-logo2.png", 
   },
 
 }
