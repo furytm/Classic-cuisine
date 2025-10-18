@@ -10,6 +10,13 @@ import { Textarea } from "@/components/ui/textarea"
 import { useLanguage } from "@/components/language-provider"
 import { whatsappMessages, openWhatsApp } from "@/components/whatsapp-utils"
 
+import emailjs from "@emailjs/browser"
+import { toast } from "@/hooks/use-toast"
+import { useState } from "react"
+import { Loader2 } from "lucide-react"
+
+
+
 const contactContent = {
   en: {
     title: "Contact Us",
@@ -80,6 +87,7 @@ const contactContent = {
 
 export default function ContactPage() {
   const { language } = useLanguage()
+   const [loading, setLoading] = useState(false)
   const content = contactContent[language]
 
   const handleWhatsAppContact = () => {
@@ -104,6 +112,49 @@ export default function ContactPage() {
 
     openWhatsApp(whatsappMessage)
   }
+
+
+const handleEmailSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+  const form = e.currentTarget
+  const formData = new FormData(form)
+  const data = Object.fromEntries(formData.entries())
+      setLoading(true)
+
+  try {
+    await emailjs.send(
+      "service_z4xvhri", 
+      "template_xycewij", 
+      data,
+      "1PYnUCyqL05vSKxX1" 
+    )
+
+    toast({
+      title: language === "sv" ? "✅ Klart!" : "✅ Success!",
+      description:
+        language === "sv"
+          ? "Meddelandet har skickats! Vi återkommer snart."
+          : "Message sent successfully! We'll get back to you soon.",
+      variant: "default",
+    })
+
+    form.reset()
+  } catch (error) {
+    console.error("EmailJS Error:", error)
+    toast({
+      title: language === "sv" ? "❌ Fel!" : "❌ Error!",
+      description:
+        language === "sv"
+          ? "Misslyckades att skicka meddelandet. Försök igen senare."
+          : "Failed to send message. Please try again later.",
+      variant: "destructive",
+    })
+  }finally {
+      setLoading(false)
+    }
+  
+}
+
 
   return (
     <>
@@ -215,71 +266,80 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="animate-scale-in">
               <h2 className="font-serif text-3xl font-bold text-primary mb-8">{content.sendMessage}</h2>
+<form onSubmit={handleEmailSubmit} className="space-y-6">
+  <div>
+    <label htmlFor="name" className="block text-sm font-medium text-secondary-foreground mb-2">
+      {content.form.name}
+    </label>
+    <Input
+      id="name"
+      name="name"
+      type="text"
+      required
+      placeholder={content.form.namePlaceholder}
+      className="w-full"
+    />
+  </div>
 
-              <form onSubmit={handleFormSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-secondary-foreground mb-2">
-                    {content.form.name}
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    placeholder={content.form.namePlaceholder}
-                    className="w-full"
-                  />
-                </div>
+  <div>
+    <label htmlFor="email" className="block text-sm font-medium text-secondary-foreground mb-2">
+      {content.form.email}
+    </label>
+    <Input
+      id="email"
+      name="email"
+      type="email"
+      required
+      placeholder={content.form.emailPlaceholder}
+      className="w-full"
+    />
+  </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-secondary-foreground mb-2">
-                    {content.form.email}
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder={content.form.emailPlaceholder}
-                    className="w-full"
-                  />
-                </div>
+  <div>
+    <label htmlFor="subject" className="block text-sm font-medium text-secondary-foreground mb-2">
+      {content.form.subject}
+    </label>
+    <Input
+      id="subject"
+      name="subject"
+      type="text"
+      required
+      placeholder={content.form.subjectPlaceholder}
+      className="w-full"
+    />
+  </div>
 
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-secondary-foreground mb-2">
-                    {content.form.subject}
-                  </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    required
-                    placeholder={content.form.subjectPlaceholder}
-                    className="w-full"
-                  />
-                </div>
+  <div>
+    <label htmlFor="message" className="block text-sm font-medium text-secondary-foreground mb-2">
+      {content.form.message}
+    </label>
+    <Textarea
+      id="message"
+      name="message"
+      required
+      rows={6}
+      placeholder={content.form.messagePlaceholder}
+      className="w-full"
+    />
+  </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-secondary-foreground mb-2">
-                    {content.form.message}
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    placeholder={content.form.messagePlaceholder}
-                    className="w-full"
-                  />
-                </div>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-primary text-secondary hover:bg-primary/90 font-semibold py-3 rounded-full transition-all duration-300 hover:scale-105"
-                >
-                  {content.form.send}
-                </Button>
-              </form>
+      <Button
+        type="submit"
+        disabled={loading}
+        className="w-full bg-primary text-secondary hover:bg-primary/90 font-semibold py-3 rounded-full transition-all duration-300 hover:scale-105 flex items-center justify-center"
+      >
+        {loading ? (
+          <>
+            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+            {language === "sv" ? "Skickar..." : "Sending..."}
+          </>
+        ) : (
+          content.form.send
+        )}
+      </Button>
+</form>
+
             </div>
           </div>
         </div>

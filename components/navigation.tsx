@@ -32,6 +32,11 @@ const ctaLabels = {
   en: "Order Now",
   sv: "Beställ Nu",
 }
+const Navquote={
+  en:   "Soul In Every Bite",
+    sv: "Själ i varje tugga"
+
+}
 
 export default function Navigation({ language, onLanguageChange }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -49,7 +54,7 @@ export default function Navigation({ language, onLanguageChange }: NavigationPro
               className="w-20 h-12"
             />
 <span className="text-primary dancing-script text-xl md:text-lg lg:text-2xl">
-  Soul In Every Bite
+{Navquote[language]}
 </span>
 
 
