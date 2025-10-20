@@ -176,7 +176,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {content.highlights.features.map((feature, index) => (
               <div
                 key={index}
@@ -204,55 +204,64 @@ export default function HomePage() {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">{content.featured.subtitle}</p>
           </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
+  {/* Item 1 */}
+  <div className="group cursor-pointer animate-scale-in">
+    <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative">
+      <Image
+        src="/images/egusi-soup-2.jpg"
+        alt="Signature Dish"
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <h3 className="font-serif text-xl font-semibold">Signature Dish</h3>
+        <p className="text-sm">Traditional West African</p>
+      </div>
+    </div>
+  </div>
 
-          
-            <div className="group cursor-pointer animate-scale-in">
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative">
-                 <Image
-            src="/images/egusi-soup-2.jpg"
-            alt="Signature Dish"
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
-          />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="font-serif text-xl font-semibold">Signature Dish</h3>
-                  <p className="text-sm">Traditional West African</p>
-                </div>
-              </div>
-            </div>
-            <div className="group cursor-pointer animate-scale-in" style={{ animationDelay: "0.1s" }}>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative">
-                 <Image
-            src="/images/fried-rice.jpg" 
-            alt="Signature Dish"
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
-          />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="font-serif text-xl font-semibold">Popular Choice</h3>
-                  <p className="text-sm">Customer Favorite</p>
-                </div>
-              </div>
-            </div>
-            <div className="group cursor-pointer animate-scale-in col-span-2 md:col-span-1 flex justify-center" style={{ animationDelay: "0.2s" }}>
-              <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative  w-full max-w-[200px]">
-                 <Image
-            src="/images/peppered-meat-plantain.jpg" 
-            alt="Signature Dish"
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-110"
-          />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="font-serif text-xl font-semibold">Chef Special</h3>
-                  <p className="text-sm">Limited Time</p>
-                </div>
-              </div>
-            </div>
-          </div>
+  {/* Item 2 */}
+  <div
+    className="group cursor-pointer animate-scale-in"
+    style={{ animationDelay: "0.1s" }}
+  >
+    <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative">
+      <Image
+        src="/images/fried-rice.jpg"
+        alt="Popular Choice"
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <h3 className="font-serif text-xl font-semibold">Popular Choice</h3>
+        <p className="text-sm">Customer Favorite</p>
+      </div>
+    </div>
+  </div>
+
+  {/* Item 3 — Centered on mobile/md only */}
+  <div
+    className="group cursor-pointer animate-scale-in col-span-2 md:col-span-1 flex justify-center md:justify-center lg:justify-start"
+    style={{ animationDelay: "0.2s" }}
+  >
+    <div className="aspect-square bg-muted rounded-lg overflow-hidden mb-4 relative w-full max-w-[250px] md:max-w-[250px] lg:max-w-none">
+      <Image
+        src="/images/peppered-meat-plantain.jpg"
+        alt="Chef Special"
+        fill
+        className="object-cover transition-transform duration-300 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <h3 className="font-serif text-xl font-semibold">Chef Special</h3>
+        <p className="text-sm">Limited Time</p>
+      </div>
+    </div>
+  </div>
+</div>
 
           <div className="text-center">
             <Button
