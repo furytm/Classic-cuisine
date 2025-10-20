@@ -110,7 +110,7 @@ const orderContent = {
     info: {
       note: "Bokningar bekräftas endast när du svarar på WhatsApp.",
       contact: {
-        phone: "+46 123 456 789",
+        phone: "+46764140284",
         email: "info@crystalclasscuisine.se",
       },
     },

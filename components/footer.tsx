@@ -50,6 +50,16 @@ const footerContent = {
     ],
   },
 }
+const Footquote={
+  en:   "Soul In Every Bite",
+    sv: "Själ i varje tugga"
+
+}
+const Foottext={
+  en:   "Developed and Designed by Suwebatu",
+    sv: "Utvecklad och designad av Suwebatu"
+
+}
 
 export default function Footer({ language }: FooterProps) {
   const content = footerContent[language]
@@ -83,7 +93,7 @@ export default function Footer({ language }: FooterProps) {
                 height={48}
                 className="w-20 h-12"
               />
-              <span className="text-primary font-serif text-sm sm:text-base lg:text-xl font-bold">Crystal Class Cuisine</span>
+              <span className="text-primary  dancing-script text-sm sm:text-base lg:text-xl font-bold">{Footquote[language]}</span>
             </div>
             <p className="text-muted-foreground leading-relaxed">
               {language === "en"
@@ -176,7 +186,7 @@ export default function Footer({ language }: FooterProps) {
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-primary/20 text-center">
           <p className="text-white">{content.copyright}</p>
-          <p className="text-white">Developed and Designed by Suwebatu</p>
+          <p className="text-white">{Foottext[language]}</p>
         </div>
       </div>
     </footer>
